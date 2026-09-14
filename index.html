@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday 3D Interactive</title>
+
+  <link rel="stylesheet" href="premium.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="countdown-pending">
+
+  <div class="luxury-effects" aria-hidden="true">
+    <div class="cake-aura"></div>
+    <div class="spotlight"></div>
+    <div class="light-orbit"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="rising-dust"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="center-bokeh"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="confetti-rain">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+  </div>
+  <div class="balloon-cluster balloon-left" aria-hidden="true"><i class="balloon gold"></i><i class="balloon navy"></i><i class="balloon champagne"></i><i class="balloon rose"></i><i class="balloon aqua"></i></div>
+  <div class="balloon-cluster balloon-right" aria-hidden="true"><i class="balloon gold"></i><i class="balloon navy"></i><i class="balloon champagne"></i><i class="balloon rose"></i><i class="balloon aqua"></i></div>
+
+  <audio id="bg-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="header-ui">
+    <div class="title" id="main-title">Happy Birthday!</div>
+    <div class="subtitle" id="sub-title">Chúc Mừng Sinh Nhật Rực Rỡ</div>
+    <div class="countdown-kicker">✨ SỰ KIỆN SẮP BẮT ĐẦU ✨</div>
+    <div class="countdown-card" id="countdown-card" aria-live="polite">
+      <i class="countdown-sparkle sparkle-tl" aria-hidden="true">✦</i><i class="countdown-sparkle sparkle-tr" aria-hidden="true">✦</i><i class="countdown-sparkle sparkle-bl" aria-hidden="true">✦</i><i class="countdown-sparkle sparkle-br" aria-hidden="true">✦</i>
+      <div class="countdown-unit"><span class="countdown-value" id="countdown-days">00</span><span class="countdown-label">Ngày</span></div>
+      <span class="countdown-separator">:</span>
+      <div class="countdown-unit"><span class="countdown-value" id="countdown-hours">00</span><span class="countdown-label">Giờ</span></div>
+      <span class="countdown-separator">:</span>
+      <div class="countdown-unit"><span class="countdown-value" id="countdown-minutes">00</span><span class="countdown-label">Phút</span></div>
+      <span class="countdown-separator">:</span>
+      <div class="countdown-unit"><span class="countdown-value" id="countdown-seconds">00</span><span class="countdown-label">Giây</span></div>
+    </div>
+    <div class="fairy-arc" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="bunting" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+
+  <div id="canvas-container"></div>
+
+  <div id="camera-ui">
+    <video id="camera-feed" autoplay playsinline muted></video>
+    <div class="camera-status" id="camera-status">Camera đang tắt</div>
+    <button class="camera-btn" id="camera-btn" onclick="toggleCamera()" title="Bật hoặc tắt camera" aria-label="Bật hoặc tắt camera">📷</button>
+    <button class="music-btn" id="music-btn" onclick="toggleMusic()" title="Bật hoặc tắt nhạc" aria-label="Bật hoặc tắt nhạc">🎵</button>
+  </div>
+
+  <div id="ui-layer">
+    <div class="instruction-bar">
+      <span>🖐️ <strong>5 ngón:</strong> Bung bánh &amp; pháo hoa</span>
+      <span>🙌 <strong>2 bàn tay:</strong> Hiệu ứng đặc biệt</span>
+      <span>✊ <strong>Nắm tay:</strong> Thu bánh lại</span>
+      <span>↔️ <strong>Đưa tay trái/phải:</strong> Xoay bánh</span>
+      <span>😮 <strong>Há miệng:</strong> Thổi tắt nến</span>
+      <span>☝️ <strong>1-4 ngón:</strong> Xem ảnh 1-4</span>
+    </div>
+  </div>
+
+  <div id="image-modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeModal()">✕</button>
+      <img id="modal-img" src="" alt="Memory">
+      <div class="modal-caption" id="modal-caption">Kỷ niệm đáng nhớ ✨</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
