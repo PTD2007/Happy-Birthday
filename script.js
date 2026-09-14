@@ -34,15 +34,20 @@ let countdownInterval = null;
 let birthdayRevealed = false;
 let cakeRevealProgress = 0;
 
-// Temporary preview mode: the celebration starts one minute after the page loads.
-const targetDate = new Date(Date.now() + 60 * 1000);
+// Change this date to the birthday you want to celebrate (month is zero-based: 8 = September).
+const targetDate = (() => {
+  const now = new Date();
+  const date = new Date(now.getFullYear(), 8, 20, 0, 0, 0);
+  if (date <= now) date.setFullYear(date.getFullYear() + 1);
+  return date;
+})();
 
 // TÙY CHỈNH DANH SÁCH ẢNH & LỜI CHÚC TẠI ĐÂY
 const photos = [
-  { url: 'image 1.jpg', caption: 'Nhân vật anime 1 🌸' },
-  { url: 'image 2.jpg', caption: 'Nhân vật anime 2 ✨' },
-  { url: 'image 3.jpg', caption: 'Nhân vật anime 3 💫' },
-  { url: 'image 4.jpg', caption: 'Nhân vật anime 4 🎉' }
+  { url: 'image 1.jpg', caption: 'Ảnh 1 🌸' },
+  { url: 'image 2.jpg', caption: 'Ảnh 2 ✨' },
+  { url: 'image 3.jpg', caption: 'Ảnh 3 💫' },
+  { url: 'image 4.jpg', caption: 'Ảnh 4 🎉' }
 ];
 
 function init() {
