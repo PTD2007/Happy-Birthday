@@ -121,7 +121,7 @@ function revealBirthday(card) {
   document.body.classList.remove('countdown-pending');
   document.body.classList.add('birthday-revealed');
   document.getElementById('canvas-container').classList.add('show-cake');
-  document.getElementById('sub-title').textContent = '🎉 CHÚC MỪNG SINH NHẬT! BỎNG TAY BUNG BÁNH & THỔI NẾN NÀO! 🎉';
+  document.getElementById('sub-title').textContent = '🎉 CHÚC MỪNG SINH NHẬT! MỞ QUÀ & THỔI NẾN NÀO! 🎉';
   card.classList.add('countdown-complete');
   setTimeout(() => { card.style.display = 'none'; }, 650);
   launchFireworks();
