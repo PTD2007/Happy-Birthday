@@ -37,7 +37,7 @@ let cakeRevealProgress = 0;
 // Change this date to the birthday you want to celebrate (month is zero-based: 8 = September).
 const targetDate = (() => {
   const now = new Date();
-  const date = new Date(now.getFullYear(), 8, 20, 1, 0, 0);
+  const date = new Date(now.getFullYear(), 8, 16, 21, 40, 0);
   if (date <= now) date.setFullYear(date.getFullYear() + 1);
   return date;
 })();
