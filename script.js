@@ -35,12 +35,8 @@ let birthdayRevealed = false;
 let cakeRevealProgress = 0;
 
 // Change this date to the birthday you want to celebrate (month is zero-based: 8 = September).
-const targetDate = (() => {
-  const now = new Date();
-  const date = new Date(now.getFullYear(), 8, 20, 1, 00, 0);
-  
-  return date;
-})();
+const targetDate = new Date(Date.now() + 60 * 1000);
+
 
 // TÙY CHỈNH DANH SÁCH ẢNH & LỜI CHÚC TẠI ĐÂY
 const photos = [
