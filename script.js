@@ -38,7 +38,7 @@ let cakeRevealProgress = 0;
 const targetDate = (() => {
   const now = new Date();
   const date = new Date(now.getFullYear(), 8, 20, 1, 00, 0);
-  if (date <= now) date.setFullYear(date.getFullYear() + 1);
+  
   return date;
 })();
 
